@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#b10").click(function() {
+		var data1 = {
+			"username" : "test",
+			"password" : "gz"
+		};
+		$.ajax({
+			type : "POST",
+			url : "user/listUser4",
+			dataType : "json",
+			contentType : "application/json",
+			data : JSON.stringify(data1),
+			success : function(data) {
+				$("#d10").html(data.username + "," + data.password);
+			}
+		});
+	})
+})
+
+</script>
+</head>
+<body>
+	<button id="b10">点击</button>
+	<div id="d10"></div>
+</body>
+</html>
