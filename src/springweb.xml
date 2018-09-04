@@ -23,4 +23,21 @@
     <!-- 访问静态资源用的 -->
     <mvc:default-servlet-handler/>
     <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"></bean>
+
+  <!--拦截器-->
+    <mvc:interceptors>
+        <!--权限控制拦截器-->
+        <mvc:interceptor>
+            <!--对所有路径进行拦截-->
+            <mvc:mapping path="/**"/>
+            <!--不拦截登录页面-->
+           <!--  <mvc:exclude-mapping path="/login.jsp"/> -->
+            <!--不拦截登录方法-->
+	<!-- <mvc:exclude-mapping path="/login"/> -->
+                <bean id="logInterceptor" class="com.mashensoft.interceptor.LogInterceptor"></bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+
+
 </beans>
